@@ -1,0 +1,31 @@
+{
+  "name": "course-learning-app",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/anonto42/Course-Learning-App#readme",
+  "bugs": {
+    "url": "https://github.com/anonto42/Course-Learning-App/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anonto42/Course-Learning-App.git"
+  },
+  "license": "ISC",
+  "author": "anontom90@gmail.com",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "dev":"nodemon src/index.ts",
+    "build": "tsc --project .",
+    "start": "node ./dist/index.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "ts-node": "^10.9.2"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.1",
+    "nodemon": "^3.1.9",
+    "typescript": "^5.8.3"
+  }
+}
