@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { CreateCorse, GetCourses, MakeUserToTecher, AddCourseContent } from "../controllers/teacher.controller";
+import { CreateCorse, GetCourses, MakeUserToTecher, AddCourseContent, DeleteCource } from "../controllers/teacher.controller";
 import { getToken, isTeacher } from "../middleware/auth.middleware";
 
 const TechersRouter = Router();
@@ -18,5 +18,6 @@ TechersRouter
     .get(GetCourses) // get all Cours
     .post(CreateCorse) // Create user
     .put(AddCourseContent) // addContent
+    .delete(DeleteCource) //
 
 export default TechersRouter
