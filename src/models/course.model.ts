@@ -6,7 +6,10 @@ export interface CourseType {
     createdBy: { type: Types.ObjectId, path: string};
     lessons: Types.ObjectId;
     enrolled: Types.ObjectId[];
-    totalViewrs: Types.ObjectId[];
+    totalViewrs: {
+        type: number,
+        defualt: number
+    };
     likes: Types.ObjectId[];
     feedbacks: Types.ObjectId[];
 }
@@ -33,16 +36,14 @@ const CoursetSchema = new Schema<CourseType>(
                 path: "users"
             }
         ],
-        totalViewrs: [
-            {
-                type: Types.ObjectId,
-                path: "users"
-            }
-        ],
+        totalViewrs: {
+            type: Number,
+            default: 0
+        },
         likes: [
             {
                 type: Types.ObjectId,
-                path: "users"
+                path: "likes"
             }
         ],
         feedbacks: [

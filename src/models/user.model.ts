@@ -7,6 +7,7 @@ export interface UserInterface extends Document{
     follow: Types.ObjectId[];
     followedBy: Types.ObjectId[]; 
     createdCourses: Types.ObjectId[];
+    folowCourses: Types.ObjectId[];
     enrolled: {
         type: Types.ObjectId,
         path: string,
@@ -54,12 +55,12 @@ const userSchema = new Schema<UserInterface>(
             {
                 type: Types.ObjectId,
                 path:"courses",
-                lastAccessedAt: { type: Date, default: Date.now },
-                completedLessons: [ { type: Number } ],
-                answerdQuistion: {
-                    type: Number,
-                    default: 0
-                }
+            }
+        ],
+        folowCourses: [
+            {
+                type: Types.ObjectId,
+                path:"courses",
             }
         ],
         role:{
