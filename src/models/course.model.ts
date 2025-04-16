@@ -3,13 +3,10 @@ import { model, Schema, Types } from "mongoose";
 export interface CourseType {
     title: string;
     description: string;
-    createdBy: { type: Types.ObjectId, path: string};
+    createdBy: { type: Types.ObjectId, path: string };
     lessons: Types.ObjectId[];
     enrolled: Types.ObjectId[];
-    totalViews: {
-        type: number,
-        defualt: number
-    };
+    totalViews: Types.ObjectId[];
     likes: Types.ObjectId[];
     feedbacks: Types.ObjectId[];
 }
@@ -36,14 +33,14 @@ const CoursetSchema = new Schema<CourseType>(
                 path: "users"
             }
         ],
-        totalViews: {
-            type: Number,
-            default: 0
-        },
+        totalViews: [{
+            type: Types.ObjectId,
+            path: "users"
+        }],
         likes: [
             {
                 type: Types.ObjectId,
-                path: "likes"
+                path: "users"
             }
         ],
         feedbacks: [
