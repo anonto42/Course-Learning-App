@@ -160,7 +160,7 @@ export async function Login(req: Request, res: Response, next: NextFunction) {
         }
 
         const dataForIncript: SignType = {
-            id: isUserExist?._id.toString()!,
+            id: isUserExist?._id as string,
             userType: isUserExist?.role!
         }
 
