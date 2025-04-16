@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import cookie from "cookie-parser";
 import connectDB from "./db/connectDB";
 import { GlobalError } from "./middleware/global.error.middleware";
-import TechersRouter from "./routes/techer.route";
+import TechersRouter from "./routes/teacher.route";
 import corse from "cors";
 import StudentRouter from "./routes/student.route";
 
