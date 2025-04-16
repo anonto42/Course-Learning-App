@@ -266,20 +266,12 @@ export async function LikeCourse(req: WithUserRequest, res: Response, next: Next
             ))
         }
 
-        const isAlreadyLiked = courseDocument!.enrolled.includes(user?._id as Types.ObjectId);
-        if (isAlreadyLiked) {
-            ResponseHandler.success(
-                res,
-                "You are already liked in this course.",
-                StatusCode.success,
-                courseDocument!
-            );
+        const isAlreadyLiked = courseDocument?.likes.includes(user?._id as Types.ObjectId);
+        if (!isAlreadyLiked) {
+            courseDocument?.likes?.push( user?._id as Types.ObjectId );
+            await courseDocument?.save();
         }
-
-        courseDocument?.likes.push( user?._id as Types.ObjectId );
-
-        await courseDocument?.save();
-
+        
         ResponseHandler.success(
             res,
             "Liked the course SuccessFully",
@@ -472,9 +464,12 @@ export async function FollowCourseCreator(req: WithUserRequest, res: Response, n
             ))
         }
         
-        await userDocument?.followedBy.push( user?._id as Types.ObjectId );
+        const isAlreadyFollowed = userDocument!.followedBy.includes(user?._id as Types.ObjectId);
+        if (!isAlreadyFollowed) {
+            userDocument?.followedBy.push( user?._id as Types.ObjectId );
+            await userDocument?.save();
+        }
 
-        await userDocument?.save();
 
         ResponseHandler.success(
             res,
