@@ -5,14 +5,12 @@ export interface SignType {
     userType: string;
 }
 
-const jwtSecret = process.env.JWT_SECRET || "";
-
 export function JWT_SIGN (value: SignType){ 
-    const JWT = jwt.sign(value, jwtSecret,{expiresIn:"3d"});
+    const JWT = jwt.sign(value, process.env.JWT_SECRET!);
     return JWT
 }
 
 export function JWT_DECODE(inCodedValue: string): JwtPayload {
-    const decode = jwt.verify(inCodedValue,jwtSecret)
+    const decode = jwt.verify(inCodedValue,process.env.JWT_SECRET!)
     return decode as JwtPayload
 }
