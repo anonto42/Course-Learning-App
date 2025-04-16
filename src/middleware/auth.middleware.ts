@@ -110,14 +110,14 @@ export const isTeacher = async (req: WithUserRequest, res: Response, next: NextF
         const error = new Error();
         next(ResponseHandler.error(
             res,
-            "You Must provide name, email and password for register!",
+            "You are not a teacher to access this route!",
             [
                 {
                     path: [
-                        "Register",
+                        "Teacher",
                         "Messing"
                     ],
-                    message: "Messing filds to create account"
+                    message: "not a teacher"
                 }
             ],
             StatusCode.noContent,
