@@ -17,7 +17,7 @@ TechersRouter
     .route("/course")
     .get(GetCourses) // get all Cours
     .post(CreateCorse) // Create user
-    .put(AddCourseContent) // addContent
-    .delete(DeleteCource) //
+    .put(AddCourseContent) // customize
+    .delete(DeleteCource) // delete
 
 export default TechersRouter
