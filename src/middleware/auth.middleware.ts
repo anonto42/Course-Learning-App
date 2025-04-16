@@ -17,14 +17,14 @@ export const getToken = async (req: WithUserRequest, res: Response, next: NextFu
             next(
                 ResponseHandler.error(
                     res,
-                    "Problem on the auth midleware",
+                    "You are not authorize access this route!",
                     [
                         {
                             path:[
                                 "JWT",
                                 "Cookie"
                             ],
-                            message:"Facing problem to geting the cookie"
+                            message:"invalie cookie!"
                         }
                     ],
                     StatusCode.unexpected,
