@@ -1,8 +1,22 @@
 import { model, Schema, Types } from "mongoose";
 
+
+export interface BlocksType {
+    name: string;
+    topic: string,
+    quize:{
+        quistion: string,
+        answer: string
+    }
+}
+
 export interface LessonsType {
     title: string;
-    blocks: Types.ObjectId[];
+    blocks: BlocksType[];
+    courseID: {
+        type: Types.ObjectId
+        path: string
+    },
 }
 
 const LessonSchema = new Schema<LessonsType>(
@@ -12,13 +26,37 @@ const LessonSchema = new Schema<LessonsType>(
             required: true,
             trim: true
         },
-        blocks:[{
+        courseID: {
             type: Types.ObjectId,
-            path: "topics"
-        }],
+            path: "course"
+        },
+        blocks:[
+            {
+                name: {
+                    type: String,
+                    required: true,
+                    unique: true,
+                    trim: true
+                },
+                topic: {
+                    type: String,
+                    required: true
+                },
+                quize:{
+                    quistion:{
+                        type: String,
+                        required: true
+                    },
+                    answer:{
+                        type: String,
+                        requird: true 
+                    }
+                }
+            }
+        ],
     },{
         timestamps:true
     }
 )
 
-export const lesson = model("lesson",LessonSchema);
+export const Lesson = model("lesson",LessonSchema);
