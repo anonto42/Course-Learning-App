@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction,} from "express"
+import { StatusCode } from "../utils/StatusCode";
 
 interface ErrorResponse extends Error{ 
     statusCode: number, 
@@ -13,7 +14,7 @@ export function GlobalError (
     res:Response, 
     next:NextFunction
 ){
-    error.statusCode = error.statusCode || 500;
+    error.statusCode = error.statusCode || StatusCode.unexpected;
     error.status = error.status || "error"
     res
     .status(error.statusCode)
