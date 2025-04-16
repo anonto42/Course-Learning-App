@@ -4,17 +4,16 @@ export interface UserInterface extends Document{
     name: string;
     email: string;
     password: string;
+    role: string;
     follow: Types.ObjectId[];
     followedBy: Types.ObjectId[]; 
     createdCourses: Types.ObjectId[];
     folowCourses: Types.ObjectId[];
-    enrolled: {
-        type: Types.ObjectId,
-        path: string,
-        completedLessons: number[],
-        answerdQuistion: number
-    }[];
-    role: string;
+    enrolled: Types.ObjectId[];
+    totalAnswerd:{
+        type: Number,
+        default: 0
+    }
 }
 
 const userSchema = new Schema<UserInterface>(
@@ -68,7 +67,10 @@ const userSchema = new Schema<UserInterface>(
             default: "student",
             enum: ["student","teacher"]
         },
-
+        totalAnswerd:{
+            type: Number,
+            default: 0
+        }
     },{
         timestamps:true
     }
