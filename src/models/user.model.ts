@@ -1,4 +1,4 @@
-import { model, Schema, Types } from "mongoose";
+import { Document, model, Schema, Types } from "mongoose";
 
 export interface UserInterface extends Document{
     name: string;
