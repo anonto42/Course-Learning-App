@@ -1,13 +1,13 @@
 import jwt, { JwtPayload } from "jsonwebtoken";
 
-interface imp { 
+export interface SignType { 
     id: string;
     userType: string;
 }
 
 const jwtSecret = process.env.JWT_SECRET || "";
 
-export function JWT_SIGN (value: imp){ 
+export function JWT_SIGN (value: SignType){ 
     const JWT = jwt.sign(value, jwtSecret,{expiresIn:"3d"});
     return JWT
 }
